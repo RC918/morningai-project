@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: Optional[str] = None
     POSTGRES_USER: str = "morningai"
-    POSTGRES_PASSWORD: str = "changeme"
-    POSTGRES_DB: str = "morningai_dev"
+    POSTGRES_PASSWORD: str = "morningai123"
+    POSTGRES_DB: str = "morningai"
     POSTGRES_HOST: str = "localhost"
     POSTGRES_PORT: str = "5432"
     
@@ -23,8 +23,8 @@ class Settings(BaseSettings):
     def assemble_db_connection(cls, v: Optional[str], values: dict) -> str:
         if isinstance(v, str) and v:
             return v
-        # 如果沒有提供DATABASE_URL，使用SQLite作為fallback
-        return "sqlite:///./morningai.db"
+        # 使用PostgreSQL作為預設資料庫
+        return f"postgresql://{values.get('POSTGRES_USER', 'morningai')}:{values.get('POSTGRES_PASSWORD', 'morningai123')}@{values.get('POSTGRES_HOST', 'localhost')}:{values.get('POSTGRES_PORT', '5432')}/{values.get('POSTGRES_DB', 'morningai')}"
     
     # JWT
     JWT_SECRET: str = "your-super-secret-jwt-key-change-this-in-production"

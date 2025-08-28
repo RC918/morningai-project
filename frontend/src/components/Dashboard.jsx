@@ -6,6 +6,9 @@ import { Alert, AlertDescription } from '@/components/ui/alert.jsx'
 import { StatusCard } from './Layout.jsx'
 import { Activity, Database, Shield, Users, RefreshCw, CheckCircle, AlertCircle } from 'lucide-react'
 
+// API 基礎 URL - 使用公開的後端地址
+const API_BASE_URL = 'https://8001-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer'
+
 export function Dashboard() {
   const [healthStatus, setHealthStatus] = useState(null)
   const [dbStatus, setDbStatus] = useState(null)
@@ -16,7 +19,7 @@ export function Dashboard() {
     setLoading(true)
     try {
       // 檢查API健康狀態
-      const healthResponse = await fetch('/api/v1/health/')
+      const healthResponse = await fetch(`${API_BASE_URL}/api/v1/health/`)
       const healthData = await healthResponse.json()
       setHealthStatus({
         status: healthResponse.ok ? 'healthy' : 'error',
@@ -24,7 +27,7 @@ export function Dashboard() {
       })
 
       // 檢查資料庫健康狀態
-      const dbResponse = await fetch('/api/v1/health/db')
+      const dbResponse = await fetch(`${API_BASE_URL}/api/v1/health/db`)
       const dbData = await dbResponse.json()
       setDbStatus({
         status: dbResponse.ok ? 'healthy' : 'error',
@@ -32,7 +35,7 @@ export function Dashboard() {
       })
 
       // 檢查角色系統
-      const rolesResponse = await fetch('/api/v1/roles/')
+      const rolesResponse = await fetch(`${API_BASE_URL}/api/v1/roles/`)
       const rolesData = await rolesResponse.json()
       setRolesStatus({
         status: rolesResponse.ok && rolesData.length > 0 ? 'healthy' : 'warning',
@@ -51,7 +54,7 @@ export function Dashboard() {
 
   const seedRoles = async () => {
     try {
-      const response = await fetch('/api/v1/roles/seed', {
+      const response = await fetch(`${API_BASE_URL}/api/v1/roles/seed`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

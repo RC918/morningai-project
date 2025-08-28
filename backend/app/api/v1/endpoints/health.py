@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 from app.db.base import get_db
 from app.core.config import settings
 
@@ -25,7 +26,7 @@ async def database_health_check(db: Session = Depends(get_db)):
     """資料庫健康檢查端點"""
     try:
         # 嘗試執行簡單的資料庫查詢
-        db.execute("SELECT 1")
+        db.execute(text("SELECT 1"))
         return JSONResponse(
             status_code=200,
             content={
