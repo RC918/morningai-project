@@ -1,20 +1,38 @@
 #!/usr/bin/env python3
 """
-標準 Flask 入口文件
+Flask 應用入口文件
 """
 
-import sys
-import os
+from flask import Flask, jsonify
 
-# 添加專案根目錄到 Python 路徑
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+app = Flask(__name__)
 
-from app.main import app
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "MorningAI API is running",
+        "status": "healthy",
+        "service": "morningai-api",
+        "version": "1.0.0"
+    })
 
-# Flask 應用實例
-application = app
+@app.route('/health')
+def health():
+    return jsonify({
+        "status": "healthy",
+        "service": "morningai-api",
+        "version": "1.0.0"
+    })
+
+@app.route('/api/v1/health/')
+def api_health():
+    return jsonify({
+        "status": "healthy",
+        "service": "morningai-api",
+        "version": "1.0.0",
+        "message": "API is running normally"
+    })
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8000, debug=False)
 
