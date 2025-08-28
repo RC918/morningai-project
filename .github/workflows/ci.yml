@@ -1,0 +1,185 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # 程式碼品質檢查
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install frontend dependencies
+      working-directory: ./frontend
+      run: |
+        npm install -g pnpm
+        pnpm install
+
+    - name: Install backend dependencies
+      working-directory: ./backend
+      run: |
+        pip install -r requirements.txt
+
+    - name: Lint frontend
+      working-directory: ./frontend
+      run: pnpm run lint
+
+    - name: Lint backend
+      working-directory: ./backend
+      run: |
+        pip install flake8 black isort
+        flake8 app --max-line-length=88 --extend-ignore=E203,W503
+        black --check app
+        isort --check-only app
+
+    - name: Build frontend
+      working-directory: ./frontend
+      run: pnpm run build
+
+  # Docker 建置測試
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build backend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./backend
+        push: false
+        tags: morningai-backend:test
+
+    - name: Build frontend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./frontend
+        push: false
+        tags: morningai-frontend:test
+
+    - name: Build agent-hub image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./agent-hub
+        push: false
+        tags: morningai-agent-hub:test
+
+  # 部署到 Staging (develop 分支)
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [lint-and-test, docker-build]
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+
+    - name: Deploy to Vercel (Staging)
+      working-directory: ./frontend
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      run: |
+        npm install -g pnpm
+        pnpm install
+        pnpm run build
+        vercel --prod --token $VERCEL_TOKEN
+
+    - name: Notify deployment success
+      run: |
+        echo "✅ Staging deployment completed successfully!"
+        echo "🔗 Staging URL: https://staging-morningai.vercel.app"
+
+  # 部署到 Production (main 分支，需要手動審核)
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [lint-and-test, docker-build]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+
+    - name: Deploy to Vercel (Production)
+      working-directory: ./frontend
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      run: |
+        npm install -g pnpm
+        pnpm install
+        pnpm run build
+        vercel --prod --token $VERCEL_TOKEN
+
+    - name: Notify deployment success
+      run: |
+        echo "🚀 Production deployment completed successfully!"
+        echo "🔗 Production URL: https://morningai.vercel.app"
+
+  # 健康檢查
+  health-check:
+    runs-on: ubuntu-latest
+    needs: [deploy-staging]
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Wait for deployment
+      run: sleep 30
+
+    - name: Health check
+      run: |
+        # 檢查 Staging 環境健康狀態
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://staging-morningai.vercel.app/api/v1/health/ || echo "000")
+        if [ "$response" = "200" ]; then
+          echo "✅ Staging health check passed"
+        else
+          echo "❌ Staging health check failed (HTTP $response)"
+          exit 1
+        fi
+

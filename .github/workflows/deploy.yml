@@ -1,0 +1,81 @@
+name: Deploy to Vercel
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: |
+        npm install -g pnpm
+        pnpm install
+
+    - name: Build application
+      working-directory: ./frontend
+      run: pnpm run build
+
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+
+    - name: Deploy to Vercel
+      working-directory: ./frontend
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      run: |
+        if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+          vercel --prod --token $VERCEL_TOKEN
+        else
+          vercel --token $VERCEL_TOKEN
+        fi
+
+    - name: Run health check
+      run: |
+        sleep 30
+        if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+          URL="https://morningai.vercel.app"
+        else
+          URL="https://staging-morningai.vercel.app"
+        fi
+        
+        response=$(curl -s -o /dev/null -w "%{http_code}" $URL/api/v1/health/ || echo "000")
+        if [ "$response" = "200" ]; then
+          echo "✅ Health check passed for ${{ github.event.inputs.environment }}"
+        else
+          echo "❌ Health check failed for ${{ github.event.inputs.environment }} (HTTP $response)"
+          exit 1
+        fi
+
+    - name: Notify success
+      run: |
+        if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+          echo "🚀 Production deployment completed!"
+          echo "🔗 URL: https://morningai.vercel.app"
+        else
+          echo "✅ Staging deployment completed!"
+          echo "🔗 URL: https://staging-morningai.vercel.app"
+        fi
+
