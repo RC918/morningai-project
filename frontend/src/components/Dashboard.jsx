@@ -7,7 +7,7 @@ import { StatusCard } from './Layout.jsx'
 import { Activity, Database, Shield, Users, RefreshCw, CheckCircle, AlertCircle } from 'lucide-react'
 
 // API 基礎 URL - 使用公開的後端地址
-const API_BASE_URL = 'https://8001-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer'
+const API_BASE_URL = 'https://8002-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer'
 
 export function Dashboard() {
   const [healthStatus, setHealthStatus] = useState(null)

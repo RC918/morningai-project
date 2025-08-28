@@ -1,21 +1,13 @@
 {
-  "version": 2,
   "framework": "vite",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd frontend && npm ci && npm run build",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "cd frontend && npm ci",
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://8002-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer/api/:path*"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
-      ]
+      "source": "/api/(.*)",
+      "destination": "https://8002-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer/api/$1"
     }
   ]
 }
+
