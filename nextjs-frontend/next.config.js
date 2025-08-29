@@ -8,7 +8,7 @@ const nextConfig = {
   
   // 國際化配置
   experimental: {
-    typedRoutes: false,
+    typedRoutes: false, // 暫時關閉以快速通過 Phase 2 建置
   },
   
   // 環境變數

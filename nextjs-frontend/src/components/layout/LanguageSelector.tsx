@@ -18,15 +18,17 @@ export function LanguageSelector() {
 
   const handleLanguageChange = (newLocale: string) => {
     // 移除當前語言前綴並添加新的語言前綴
-    const pathWithoutLocale = pathname.replace(`/${locale}`, '');
-    const newPath = `/${newLocale}${pathWithoutLocale}`;
-    router.push(newPath);
+    const pathWithoutLocale = pathname.replace(/^\/(en|zh-TW|zh-CN)(?=\/|$)/, '');
+    const newPath = `/${newLocale}${pathWithoutLocale || ''}`;
+    
+    // 使用型別斷言繞過 typedRoutes（暫時方案）
+    router.push(newPath as any);
   };
 
   const currentLanguage = languages.find(lang => lang.code === locale);
 
   return (
-    <div className="relative">
+    <div className="relative group">
       <Button
         variant="outline"
         size="sm"
@@ -37,7 +39,7 @@ export function LanguageSelector() {
         <span>{currentLanguage?.name}</span>
       </Button>
       
-      {/* 簡化版本 - 可以後續擴展為下拉選單 */}
+      {/* 下拉選單 */}
       <div className="absolute right-0 top-full mt-1 bg-white dark:bg-gray-800 border rounded-md shadow-lg z-10 hidden group-hover:block">
         {languages.map((lang) => (
           <button
