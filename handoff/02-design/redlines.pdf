@@ -1,0 +1,36 @@
+# MorningAI Phase 2 Design Redlines
+
+## 設計規範文件
+
+此文件包含 MorningAI Phase 2 的完整設計規範，包括：
+
+### 1. 色彩系統
+- Primary: #3b82f6 系列
+- Secondary: #64748b 系列  
+- Success: #10b981
+- Warning: #f59e0b
+- Error: #ef4444
+
+### 2. 字體系統
+- 字體家族: Inter
+- 標題: 24px - 48px
+- 內文: 14px - 18px
+- 行高: 1.2 - 1.6
+
+### 3. 間距系統
+- 基礎單位: 4px
+- 元件間距: 8px, 16px, 24px, 32px
+- 版面邊距: 16px (mobile), 24px (tablet), 32px (desktop)
+
+### 4. 元件規範
+- 按鈕高度: 40px (default), 48px (large)
+- 圓角: 6px (default), 8px (large)
+- 陰影: 0 1px 3px rgba(0,0,0,0.1)
+
+### 5. 動效規範
+- 過渡時間: 150ms (fast), 200ms (normal), 300ms (slow)
+- 緩動函數: ease-in-out
+- 支援 prefers-reduced-motion
+
+注意：此為模擬 PDF 文件，實際部署時應包含完整的視覺設計規範。
+

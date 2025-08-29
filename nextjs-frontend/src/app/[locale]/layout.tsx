@@ -1,7 +1,8 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages } from '@/i18n/request';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n';
+import '../globals.css';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -19,16 +20,13 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // 啟用靜態渲染
-  setRequestLocale(locale);
-
   // 載入對應語言的訊息
-  const messages = await getMessages();
+  const messages = await getMessages(locale);
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
       </body>

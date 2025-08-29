@@ -1,0 +1,24 @@
+# MorningAI Phase 2 Figma Design Files
+
+## 主要設計文件
+https://www.figma.com/file/morningai-phase2-design-system
+
+## 設計系統庫
+https://www.figma.com/file/morningai-design-tokens
+
+## 原型互動
+https://www.figma.com/proto/morningai-phase2-prototype
+
+## 設計規範
+- 所有設計文件已更新至 Phase 2 規範
+- 包含完整的設計 Token 定義
+- 支援深/淺色主題切換
+- 包含所有元件狀態設計
+
+## 存取權限
+- 開發團隊：編輯權限
+- 專案管理：檢視權限
+- 客戶驗收：檢視權限
+
+注意：此為模擬連結，實際部署時應提供真實的 Figma 設計文件連結。
+

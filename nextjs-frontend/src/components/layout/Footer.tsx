@@ -4,11 +4,11 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 interface VersionInfo {
+  build_id: string;
+  commit: string;
   version: string;
-  buildId: string;
-  timestamp: string;
+  build_time: string;
   environment: string;
-  phase: string;
 }
 
 export function Footer() {
@@ -16,10 +16,19 @@ export function Footer() {
   const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
 
   useEffect(() => {
-    fetch('/api/version')
+    fetch('/version.json')
       .then(res => res.json())
       .then(data => setVersionInfo(data))
-      .catch(console.error);
+      .catch(() => {
+        // Fallback for development
+        setVersionInfo({
+          build_id: 'local-dev',
+          commit: 'unknown',
+          version: '2.0.0',
+          build_time: new Date().toISOString(),
+          environment: 'development'
+        });
+      });
   }, []);
 
   return (
@@ -33,23 +42,23 @@ export function Footer() {
           {versionInfo && (
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-xs text-gray-500 dark:text-gray-400">
               <div className="flex items-center space-x-2">
-                <span>{t('version')}:</span>
+                <span>版本:</span>
                 <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
                   {versionInfo.version}
                 </code>
               </div>
               
               <div className="flex items-center space-x-2">
-                <span>{t('buildId')}:</span>
+                <span>建置 ID:</span>
                 <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                  {versionInfo.buildId.substring(0, 8)}
+                  {versionInfo.build_id}
                 </code>
               </div>
               
               <div className="flex items-center space-x-2">
-                <span>{t('lastUpdated')}:</span>
+                <span>最後更新:</span>
                 <time className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
-                  {new Date(versionInfo.timestamp).toLocaleString()}
+                  {new Date(versionInfo.build_time).toLocaleString('zh-TW')}
                 </time>
               </div>
             </div>
