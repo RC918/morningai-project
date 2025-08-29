@@ -1,0 +1,54 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "retry": "重试",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "close": "关闭"
+  },
+  "navigation": {
+    "dashboard": "仪表板",
+    "settings": "设置",
+    "logout": "登出",
+    "language": "语言"
+  },
+  "dashboard": {
+    "title": "MorningAI 仪表板",
+    "subtitle": "Phase 1 - 基础环境建设状态监控",
+    "apiStatus": "API 服务状态",
+    "apiDescription": "FastAPI 后端服务的详细状态信息",
+    "dbConnection": "数据库连接",
+    "dbDescription": "PostgreSQL 连接状态",
+    "rbacSystem": "RBAC 权限系统",
+    "rbacDescription": "角色权限系统的配置和状态",
+    "tenantManagement": "租户管理",
+    "tenantDescription": "多租户系统状态",
+    "phase1Criteria": "Phase 1 验收准则",
+    "criteriaDescription": "根据项目要求的验收准则进行检查",
+    "healthCheck": "API health check 正常",
+    "stagingEnvironment": "Staging 环境可用",
+    "rbacSeeded": "RBAC 种子数据建立成功",
+    "checkStatus": "重新检查",
+    "createRoles": "建立默认角色",
+    "normal": "正常",
+    "error": "错误",
+    "notCompleted": "未通过",
+    "completed": "符合预期"
+  },
+  "footer": {
+    "buildId": "构建 ID",
+    "version": "版本",
+    "lastUpdated": "最后更新"
+  },
+  "accessibility": {
+    "skipToContent": "跳至主要内容",
+    "toggleMenu": "切换导航菜单",
+    "toggleLanguage": "切换语言菜单"
+  }
+}
+

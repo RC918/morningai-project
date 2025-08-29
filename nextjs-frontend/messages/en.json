@@ -1,0 +1,54 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "dashboard": {
+    "title": "MorningAI Dashboard",
+    "subtitle": "Phase 1 - Infrastructure Status Monitor",
+    "apiStatus": "API Service Status",
+    "apiDescription": "FastAPI backend service status",
+    "dbConnection": "Database Connection",
+    "dbDescription": "PostgreSQL connection status",
+    "rbacSystem": "RBAC System",
+    "rbacDescription": "Role-based access control status",
+    "tenantManagement": "Tenant Management",
+    "tenantDescription": "Multi-tenant system status",
+    "phase1Criteria": "Phase 1 Acceptance Criteria",
+    "criteriaDescription": "Acceptance criteria progress tracking",
+    "healthCheck": "API health check normal",
+    "stagingEnvironment": "Staging environment available",
+    "rbacSeeded": "RBAC seed data created successfully",
+    "checkStatus": "Check Status",
+    "createRoles": "Create Default Roles",
+    "normal": "Normal",
+    "error": "Error",
+    "notCompleted": "Not Completed",
+    "completed": "Completed"
+  },
+  "footer": {
+    "buildId": "Build ID",
+    "version": "Version",
+    "lastUpdated": "Last Updated"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "toggleMenu": "Toggle navigation menu",
+    "toggleLanguage": "Toggle language menu"
+  }
+}
+

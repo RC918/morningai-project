@@ -1,0 +1,54 @@
+{
+  "common": {
+    "loading": "載入中...",
+    "error": "錯誤",
+    "success": "成功",
+    "retry": "重試",
+    "cancel": "取消",
+    "confirm": "確認",
+    "save": "儲存",
+    "delete": "刪除",
+    "edit": "編輯",
+    "close": "關閉"
+  },
+  "navigation": {
+    "dashboard": "儀表板",
+    "settings": "設定",
+    "logout": "登出",
+    "language": "語言"
+  },
+  "dashboard": {
+    "title": "MorningAI 儀表板",
+    "subtitle": "Phase 1 - 基礎環境建置狀態監控",
+    "apiStatus": "API 服務狀態",
+    "apiDescription": "FastAPI 後端服務的詳細狀態資訊",
+    "dbConnection": "資料庫連接",
+    "dbDescription": "PostgreSQL 連接狀態",
+    "rbacSystem": "RBAC 權限系統",
+    "rbacDescription": "角色權限系統的配置和狀態",
+    "tenantManagement": "租戶管理",
+    "tenantDescription": "多租戶系統狀態",
+    "phase1Criteria": "Phase 1 驗收準則",
+    "criteriaDescription": "根據專案要求的驗收準則行檢查",
+    "healthCheck": "API health check 正常",
+    "stagingEnvironment": "Staging 環境可用",
+    "rbacSeeded": "RBAC 種子資料建立成功",
+    "checkStatus": "重新檢查",
+    "createRoles": "建立預設角色",
+    "normal": "正常",
+    "error": "錯誤",
+    "notCompleted": "未通過",
+    "completed": "符合預期"
+  },
+  "footer": {
+    "buildId": "建置 ID",
+    "version": "版本",
+    "lastUpdated": "最後更新"
+  },
+  "accessibility": {
+    "skipToContent": "跳至主要內容",
+    "toggleMenu": "切換導航選單",
+    "toggleLanguage": "切換語言選單"
+  }
+}
+
