@@ -9,7 +9,16 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "MorningAI"
     
     # Environment
-    ENVIRONMENT: str = "development"
+    ENV: str = "development"
+    ENVIRONMENT: str = "development"  # 保持向後兼容
+    
+    @validator("ENVIRONMENT", pre=True)
+    def sync_environment(cls, v: Optional[str], values: dict) -> str:
+        # 如果設定了 ENV，使用 ENV 的值
+        env_value = values.get("ENV") or os.getenv("ENV")
+        if env_value:
+            return env_value
+        return v or "development"
     
     # Database
     DATABASE_URL: Optional[str] = None
@@ -32,6 +41,7 @@ class Settings(BaseSettings):
     JWT_EXPIRE_MINUTES: int = 30
     
     # CORS
+    CORS_ALLOW_ORIGINS: Optional[str] = None
     BACKEND_CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "https://localhost:3000",
@@ -40,7 +50,14 @@ class Settings(BaseSettings):
     ]
     
     @validator("BACKEND_CORS_ORIGINS", pre=True)
-    def assemble_cors_origins(cls, v: str | List[str]) -> List[str]:
+    def assemble_cors_origins(cls, v: str | List[str], values: dict) -> List[str]:
+        # 優先使用 CORS_ALLOW_ORIGINS (Render 環境變數)
+        cors_origins = values.get("CORS_ALLOW_ORIGINS") or os.getenv("CORS_ALLOW_ORIGINS")
+        if cors_origins:
+            if isinstance(cors_origins, str):
+                return [i.strip() for i in cors_origins.split(",")]
+        
+        # 回退到原有邏輯
         if isinstance(v, str) and not v.startswith("["):
             return [i.strip() for i in v.split(",")]
         elif isinstance(v, (list, str)):

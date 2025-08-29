@@ -1,23 +1,21 @@
 services:
   - type: web
     name: morningai-api
-    env: docker
+    env: python
     plan: starter
     region: singapore
-    rootDir: .
-    dockerContext: .
-    dockerfilePath: ./backend/Dockerfile
+    rootDir: backend
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
     envVars:
-      - key: ENVIRONMENT
+      - key: ENV
         value: production
       - key: DATABASE_URL
-        sync: false
-      - key: POOL_DATABASE_URL
         sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: CORS_ALLOW_ORIGINS
-        value: https://morningai-project.vercel.app,https://morningai-project-git-main.vercel.app
+        value: https://morningai-project.vercel.app,https://*.vercel.app
     healthCheckPath: /health
     autoDeploy: true
 
