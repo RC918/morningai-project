@@ -1,0 +1,209 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "refresh": "Refresh"
+  },
+  "navigation": {
+    "home": "Home",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "about": "About",
+    "features": "Features",
+    "documentation": "Documentation",
+    "support": "Support",
+    "login": "Login",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard"
+  },
+  "home": {
+    "hero": {
+      "title": "Transform Your Business with AI",
+      "subtitle": "Powerful AI solutions that help you automate workflows, analyze data, and make smarter decisions.",
+      "cta": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "features": {
+      "title": "Why Choose MorningAI?",
+      "subtitle": "Discover the features that make us the leading AI platform",
+      "automation": {
+        "title": "Smart Automation",
+        "description": "Automate repetitive tasks and focus on what matters most"
+      },
+      "analytics": {
+        "title": "Advanced Analytics",
+        "description": "Get insights from your data with powerful AI-driven analytics"
+      },
+      "integration": {
+        "title": "Easy Integration",
+        "description": "Seamlessly integrate with your existing tools and workflows"
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "description": "Bank-level security to protect your sensitive data"
+      }
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "subtitle": "Join thousands of satisfied customers worldwide"
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Join thousands of companies already using MorningAI",
+      "button": "Start Free Trial"
+    }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that's right for your business",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save 20%",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$29",
+        "period": "/month",
+        "description": "Perfect for small teams getting started",
+        "features": [
+          "Up to 5 team members",
+          "10GB storage",
+          "Basic analytics",
+          "Email support"
+        ],
+        "cta": "Start Free Trial"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$99",
+        "period": "/month",
+        "description": "For growing businesses that need more power",
+        "features": [
+          "Up to 25 team members",
+          "100GB storage",
+          "Advanced analytics",
+          "Priority support",
+          "Custom integrations"
+        ],
+        "cta": "Get Started",
+        "popular": "Most Popular"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "period": "",
+        "description": "For large organizations with custom needs",
+        "features": [
+          "Unlimited team members",
+          "Unlimited storage",
+          "Custom analytics",
+          "24/7 dedicated support",
+          "On-premise deployment"
+        ],
+        "cta": "Contact Sales"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "question": "Can I change my plan anytime?",
+          "answer": "Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle."
+        },
+        {
+          "question": "Is there a free trial?",
+          "answer": "Yes, we offer a 14-day free trial for all plans. No credit card required."
+        },
+        {
+          "question": "What payment methods do you accept?",
+          "answer": "We accept all major credit cards, PayPal, and bank transfers for enterprise customers."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "info": {
+      "address": {
+        "title": "Office Address",
+        "value": "123 AI Street, Tech City, TC 12345"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+1 (555) 123-4567"
+      },
+      "email": {
+        "title": "Email",
+        "value": "hello@morningai.com"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "value": "Monday - Friday: 9:00 AM - 6:00 PM"
+      }
+    }
+  },
+  "footer": {
+    "company": "MorningAI",
+    "description": "Transforming businesses with intelligent AI solutions.",
+    "links": {
+      "product": "Product",
+      "company": "Company",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "copyright": "© 2025 MorningAI. All rights reserved.",
+    "version": "Version",
+    "buildId": "Build ID",
+    "lastUpdated": "Last Updated"
+  },
+  "errors": {
+    "404": {
+      "title": "Page Not Found",
+      "description": "The page you're looking for doesn't exist.",
+      "backHome": "Back to Home"
+    },
+    "500": {
+      "title": "Server Error",
+      "description": "Something went wrong on our end.",
+      "retry": "Try Again"
+    },
+    "network": {
+      "title": "Network Error",
+      "description": "Please check your internet connection.",
+      "retry": "Retry"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be no more than {max} characters",
+    "pattern": "Please enter a valid format"
+  }
+}
+
