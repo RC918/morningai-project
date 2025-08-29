@@ -22,7 +22,7 @@ export function LanguageSelector() {
     const newPath = `/${newLocale}${pathWithoutLocale || ''}`;
     
     // 使用型別斷言繞過 typedRoutes（暫時方案）
-    router.push(newPath as any);
+    router.push(newPath);
   };
 
   const currentLanguage = languages.find(lang => lang.code === locale);

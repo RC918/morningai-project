@@ -1,12 +1,27 @@
 {
-  "buildCommand": "cd nextjs-frontend && npm run build",
+  "buildCommand": "cd nextjs-frontend && npm ci && npm run build",
   "outputDirectory": "nextjs-frontend/.next",
   "installCommand": "cd nextjs-frontend && npm ci",
   "framework": "nextjs",
   "rewrites": [
     {
-      "source": "/api/backend/(.*)",
-      "destination": "https://8002-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer/api/$1"
+      "source": "/api/(.*)",
+      "destination": "https://8002-i44137t43t4fxi80nhavt-03809667.manusvm.computer/api/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
     }
   ]
 }
