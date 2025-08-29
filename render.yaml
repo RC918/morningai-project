@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: morningai-api
+    env: docker
+    plan: starter
+    region: singapore
+    rootDir: .
+    dockerContext: .
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: POOL_DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ALLOW_ORIGINS
+        value: https://morningai-project.vercel.app,https://morningai-project-git-main.vercel.app
+    healthCheckPath: /health
+    autoDeploy: true
+

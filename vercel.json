@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://8002-i44137t43t4fxi80nhavt-03809667.manusvm.computer/api/$1"
+      "destination": "https://morningai-api.onrender.com/api/$1"
     }
   ],
   "headers": [
