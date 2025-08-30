@@ -1,0 +1,209 @@
+{
+  "common": {
+    "loading": "載入中...",
+    "error": "錯誤",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "確認",
+    "save": "儲存",
+    "edit": "編輯",
+    "delete": "刪除",
+    "close": "關閉",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "search": "搜尋",
+    "filter": "篩選",
+    "sort": "排序",
+    "refresh": "重新整理"
+  },
+  "navigation": {
+    "home": "首頁",
+    "pricing": "價格方案",
+    "contact": "聯絡我們",
+    "about": "關於我們",
+    "features": "功能特色",
+    "documentation": "說明文件",
+    "support": "客戶支援",
+    "login": "登入",
+    "signup": "註冊",
+    "dashboard": "儀表板"
+  },
+  "home": {
+    "hero": {
+      "title": "用 AI 轉型您的企業",
+      "subtitle": "強大的 AI 解決方案，幫助您自動化工作流程、分析數據並做出更明智的決策。",
+      "cta": "立即開始",
+      "learnMore": "了解更多"
+    },
+    "features": {
+      "title": "為什麼選擇 MorningAI？",
+      "subtitle": "探索讓我們成為領先 AI 平台的功能特色",
+      "automation": {
+        "title": "智慧自動化",
+        "description": "自動化重複性任務，專注於最重要的事情"
+      },
+      "analytics": {
+        "title": "進階分析",
+        "description": "透過強大的 AI 驅動分析從您的數據中獲得洞察"
+      },
+      "integration": {
+        "title": "輕鬆整合",
+        "description": "與您現有的工具和工作流程無縫整合"
+      },
+      "security": {
+        "title": "企業級安全",
+        "description": "銀行級安全保護您的敏感數據"
+      }
+    },
+    "testimonials": {
+      "title": "客戶怎麼說",
+      "subtitle": "加入全球數千名滿意客戶的行列"
+    },
+    "cta": {
+      "title": "準備好開始了嗎？",
+      "subtitle": "加入已經在使用 MorningAI 的數千家公司",
+      "button": "開始免費試用"
+    }
+  },
+  "pricing": {
+    "title": "簡單透明的價格",
+    "subtitle": "選擇適合您企業的方案",
+    "monthly": "月付",
+    "yearly": "年付",
+    "save": "省下 20%",
+    "plans": {
+      "starter": {
+        "name": "入門版",
+        "price": "$29",
+        "period": "/月",
+        "description": "適合剛起步的小型團隊",
+        "features": [
+          "最多 5 名團隊成員",
+          "10GB 儲存空間",
+          "基礎分析",
+          "電子郵件支援"
+        ],
+        "cta": "開始免費試用"
+      },
+      "professional": {
+        "name": "專業版",
+        "price": "$99",
+        "period": "/月",
+        "description": "適合需要更多功能的成長型企業",
+        "features": [
+          "最多 25 名團隊成員",
+          "100GB 儲存空間",
+          "進階分析",
+          "優先支援",
+          "自訂整合"
+        ],
+        "cta": "立即開始",
+        "popular": "最受歡迎"
+      },
+      "enterprise": {
+        "name": "企業版",
+        "price": "客製化",
+        "period": "",
+        "description": "適合有客製化需求的大型組織",
+        "features": [
+          "無限團隊成員",
+          "無限儲存空間",
+          "客製化分析",
+          "24/7 專屬支援",
+          "本地部署"
+        ],
+        "cta": "聯絡業務"
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "questions": [
+        {
+          "question": "我可以隨時更改方案嗎？",
+          "answer": "是的，您可以隨時升級或降級您的方案。變更將在下一個計費週期生效。"
+        },
+        {
+          "question": "有免費試用嗎？",
+          "answer": "是的，我們為所有方案提供 14 天免費試用。無需信用卡。"
+        },
+        {
+          "question": "您接受哪些付款方式？",
+          "answer": "我們接受所有主要信用卡、PayPal，以及企業客戶的銀行轉帳。"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "我們很樂意聽到您的聲音。發送訊息給我們，我們會盡快回覆。",
+    "form": {
+      "name": "姓名",
+      "email": "電子郵件地址",
+      "company": "公司",
+      "subject": "主旨",
+      "message": "訊息",
+      "send": "發送訊息",
+      "sending": "發送中...",
+      "success": "訊息發送成功！",
+      "error": "發送訊息失敗。請重試。"
+    },
+    "info": {
+      "address": {
+        "title": "辦公室地址",
+        "value": "台北市信義區信義路五段 7 號"
+      },
+      "phone": {
+        "title": "電話",
+        "value": "+886 2 1234-5678"
+      },
+      "email": {
+        "title": "電子郵件",
+        "value": "hello@morningai.com"
+      },
+      "hours": {
+        "title": "營業時間",
+        "value": "週一至週五：上午 9:00 - 下午 6:00"
+      }
+    }
+  },
+  "footer": {
+    "company": "MorningAI",
+    "description": "用智慧 AI 解決方案轉型企業。",
+    "links": {
+      "product": "產品",
+      "company": "公司",
+      "resources": "資源",
+      "legal": "法律"
+    },
+    "copyright": "© 2025 MorningAI. 版權所有。",
+    "version": "版本",
+    "buildId": "建置 ID",
+    "lastUpdated": "最後更新"
+  },
+  "errors": {
+    "404": {
+      "title": "找不到頁面",
+      "description": "您要找的頁面不存在。",
+      "backHome": "回到首頁"
+    },
+    "500": {
+      "title": "伺服器錯誤",
+      "description": "我們這邊出了點問題。",
+      "retry": "重試"
+    },
+    "network": {
+      "title": "網路錯誤",
+      "description": "請檢查您的網路連線。",
+      "retry": "重試"
+    }
+  },
+  "validation": {
+    "required": "此欄位為必填",
+    "email": "請輸入有效的電子郵件地址",
+    "minLength": "至少需要 {min} 個字元",
+    "maxLength": "不能超過 {max} 個字元",
+    "pattern": "請輸入有效格式"
+  }
+}
+
