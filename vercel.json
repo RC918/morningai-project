@@ -1,13 +1,12 @@
 {
   "framework": "vite",
-  "buildCommand": "cd frontend && npm ci && npm run build",
-  "outputDirectory": "frontend/dist",
-  "installCommand": "cd frontend && npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://8002-ilfns8thhpkdgk0bkmmax-03809667.manusvm.computer/api/$1"
+      "destination": "https://morningai-project.onrender.com/api/$1"
     }
   ]
 }
-
